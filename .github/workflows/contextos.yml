@@ -49,6 +49,11 @@ jobs:
         run: echo "Flag descubierta"
 
   check-main:
+		if: ${{ github.ref == 'refs/heads/main' }}
+		runs-on: ubuntu-latest
+		steps:
+		  - run: echo "Desplegando en la rama {{$github.ref}} por ${{github.actor}} - opt1"
+  check-work-branch:
 		if: ${{ github.ref == 'refs/heads/aprendiendo-github-actions' }}
 		runs-on: ubuntu-latest
 		steps:
