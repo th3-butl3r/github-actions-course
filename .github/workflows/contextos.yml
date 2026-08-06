@@ -1,0 +1,55 @@
+# This is a basic workflow to help you get started with Actions
+name: expresiones
+run-name: 'Expresiones file'
+# Controls when the workflow will run
+on:
+  workflow_dispatch:
+    inputs: 
+      edad: 
+        description: 'Edad'
+        required: true
+        type: integer
+      nombre: 
+        description: 'Tu nombre'
+        required: true
+        default: 'Juan'
+        type: string
+          
+jobs:
+  mayor: 
+    if: ${{ inputs.edad >= 18 }}
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Correr script
+        uses: actions/checkout@v4
+        run: echo "${{ inputs.nombre }} es mayor de edad"
+        
+  menor: 
+    if: ${{ inputs.edad < 18 && inputs.edad > 0 }}
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Correr script 1
+        uses: actions/checkout@v4
+        run: echo "${{ inputs.nombre }} es menor de edad"
+        
+  marciano: 
+    if: ${{ inputs.edad <= 0 }}
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Correr script 2
+        uses: actions/checkout@v4
+        run: echo "${{ inputs.nombre }} ¿Eres humano?"
+        
+  tartaglia: 
+    if: contains(inputs.edad, 'platzi') == false  # Nota: este job necesita ajuste
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Correr script 3
+        uses: actions/checkout@v4
+        run: echo "Flag descubierta"
+
+  check-main:
+		if: ${{ github.ref == 'refs/heads/aprendiendo-github-actions' }}
+		runs-on: ubuntu-latest
+		steps:
+		  - run: echo "Desplegando en la rama {{$github.ref}} por ${{github.actor}}"
