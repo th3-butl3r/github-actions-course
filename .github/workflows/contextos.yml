@@ -6,4 +6,6 @@ jobs:
     if: ${{ github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Desplegando en la rama $GITHUB_REF"
+      - name: Revision contexto
+        uses: actions/checkout@v4
+        run: echo "Desplegando en la rama $GITHUB_REF"
