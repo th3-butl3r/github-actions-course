@@ -8,4 +8,4 @@ jobs:
     steps:
       - name: Revision contexto
         uses: actions/checkout@v4
-        run: echo "Desplegando en la rama $GITHUB_REF"
+        run: echo "Desplegando en la rama $GITHUB_REF por ${{github.actor}}"
