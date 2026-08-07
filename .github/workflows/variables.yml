@@ -10,4 +10,4 @@ jobs:
      JOBS_VARIABLE: Variable de jobs
     steps: 
       - name: Saludar
-      run: echo "Esta es una: $GLOBAL_WORKFLOW - Esta es una $JOBS_VARIABLE y la bandera es: ${{env.FLAG}} para: ${{env.NAME}}"
+        run: echo "Esta es una $GLOBAL_WORKFLOW - Esta es una $JOBS_VARIABLE y la bandera es ${{env.FLAG}} para ${{env.NAME}}"
