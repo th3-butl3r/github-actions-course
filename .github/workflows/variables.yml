@@ -1,0 +1,13 @@
+name: Uso de variables
+on: 
+  workflow_dispatch
+env: 
+  GLOBAL_WORKFLOW: Variable de uso global
+jobs:
+  uso-variables:
+    runs-on: ubuntu-latest
+    env:
+     JOBS_VARIABLE: Variable de jobs
+    steps: 
+      - name: Saludar
+      run: echo "Esta es una: $GLOBAL_WORKFLOW - Esta es una $JOBS_VARIABLE y la bandera es: ${{env.FLAG}} para: ${{env.NAME}}"
